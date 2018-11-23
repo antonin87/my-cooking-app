@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "5bf2b9be3cb29add319f2ef4",
+        "title": "Porc a la sauce aigre douce",
+        "description": "Eu deserunt non laborum quis mollit duis eu velit aliqua magna ad. Nostrud qui consequat aute in consectetur dolor. Ullamco eiusmod tempor anim pariatur reprehenderit deserunt. Elit laborum velit sint mollit aliqua cupidatat quis tempor nostrud tempor magna ex eiusmod. Fugiat qui eu fugiat duis irure reprehenderit adipisicing ullamco esse. Cupidatat est culpa incididunt ad non commodo ad.\r\n",
+        "cost": 2,
+        "picture": "http://placehold.it/128x128",
+        "type": "plat"
+    },
+    {
+        "_id": "5bf2b9beacf810c303dfaf95",
+        "title": "Poulet au gingembre",
+        "description": "Eu deserunt non laborum quis mollit duis eu velit aliqua magna ad. Nostrud qui consequat aute in consectetur dolor. Ullamco eiusmod tempor anim pariatur reprehenderit deserunt. Elit laborum velit sint mollit aliqua cupidatat quis tempor nostrud tempor magna ex eiusmod. Fugiat qui eu fugiat duis irure reprehenderit adipisicing ullamco esse. Cupidatat est culpa incididunt ad non commodo ad.\r\n",
+        "cost": 1,
+        "picture": "http://placehold.it/128x128",
+        "type": "plat"
+    },
+    {
+        "_id": "5bf2bb4018e8a7b241532baf",
+        "title": "Poulet au basilic sauce Teryaki",
+        "description": "Eu deserunt non laborum quis mollit duis eu velit aliqua magna ad. Nostrud qui consequat aute in consectetur dolor. Ullamco eiusmod tempor anim pariatur reprehenderit deserunt. Elit laborum velit sint mollit aliqua cupidatat quis tempor nostrud tempor magna ex eiusmod. Fugiat qui eu fugiat duis irure reprehenderit adipisicing ullamco esse. Cupidatat est culpa incididunt ad non commodo ad.\r\n",
+        "cost": 2,
+        "picture": "http://placehold.it/128x128",
+        "type": "plat"
+    }        
+]
