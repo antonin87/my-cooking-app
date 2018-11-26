@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import Wheel from './components/Wheel';
-import Toolbar from './components/Toolbar';
-import CookingProvider from './context/CookingProvider';
+import React, {Fragment} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Home from './pages/Home';
+import Wheel from './components/Wheel/';
+import Recipe from './components/Recipe/Recipe';
 import './App.scss';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-      <CookingProvider  value={this.state}>
-        <Wheel>
-        
-          
-
-        </Wheel>
-        </CookingProvider>
-      </div>
-      
+        <BrowserRouter>
+        <Fragment>
+          <Wheel />
+          <Switch>
+            <Route path="/" component={Home} exact/>
+            <Route path="/recipe/:categoryId" component={Recipe}/>
+          </Switch>
+          </Fragment>
+        </BrowserRouter>    
     );
   }
 }

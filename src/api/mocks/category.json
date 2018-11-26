@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "1",
+        "title": "Entrées"
+    },
+    {
+        "_id": "2",
+        "title": "Plats"
+    },
+    {
+        "_id": "3",
+        "title": "Desserts"
+    },       
+    {
+        "_id": "4",
+        "title": "Pâtisseries"
+    },       
+    {
+        "_id": "5",
+        "title": "Hors d'oeuvres"
+    },       
+    {
+        "_id": "6",
+        "title": "Spécialités"
+    }       
+]
