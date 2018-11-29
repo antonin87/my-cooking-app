@@ -1,11 +1,14 @@
-$base : rgb(93, 143, 207);
-$colorStep: 7;
+$colorWheel : rgba(122, 227, 160, 1);
 $colorIndex: 0;
-$rotateStep: 60;
+$colorStep: 7;
 $rotateIndex: 0;
+$rotateStep: 60;
 
-.menu-wrap{
-  display: flex;
+.menu-wrapper{
+  height:100%;
+  width:100%;
+  position:absolute;
+  transition: all .5s ease;
 }
 
 .menu {
@@ -17,7 +20,7 @@ $rotateIndex: 0;
   height: 0;
   padding-top: 40%;
   border-radius:50%;
-  border:5px solid lighten($base, 10%);
+  border:5px solid rgba(204, 173, 115, 0.973);
   box-shadow: 4px 8px 10px 2px #b3afaf;
 }
 
@@ -30,42 +33,54 @@ $rotateIndex: 0;
   height: 100%;
   clip-path: url(#sector);
   transform-style: preserve-3d;
-  transition: background-color .3s ease;
+  transition: all .2s ease-in-out;
 }
 
-@for $i from 1 through 9 {
-  .menu-#{$i} {
-    background-color: darken($base, $colorIndex * 1%);
+@for $i from 0 through 6 {
+   .menu-#{$i} {
+    background-color: darken($colorWheel, $colorIndex * 1%);
     transform: rotate($rotateIndex * 1deg);
-    &:hover{
-      background-color: darken($base, ($colorStep * 2) * 1%)
-    } 
-    $colorIndex: $colorIndex + $colorStep;
-    $rotateIndex: $rotateIndex + $rotateStep;
+    @if ($i == 0) {
+      .icon{
+        right: 8%;
+        top: 32%;
+        transform: rotate(-31deg);
+      }
+    }
+    @if ($i == 5) {
+      .icon{
+        right: 11%;
+        top: 32%;
+        transform: rotate(-28deg);
+      }
+    }
+    &:hover {
+      background-color: darken(rgba(122, 227, 160, .5), $colorIndex * 1%);
+    }
   }
-}  
-
+  $colorIndex: $colorIndex + $colorStep;
+  $rotateIndex: $rotateIndex + $rotateStep;
+}
 
 .icon {
   position: absolute;
   right: 15%;
   top: 30%;
   transform: rotate(-40deg);
-  color: darken($base, 60%);
-  font-family: Arial, Helvetica, sans-serif;
+  color: darken($colorWheel, 60%);
+  font-family: Indie Flower;
   font-size: 28px;
 
   button {
-    text-align: center;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid #b3afaf;
-    padding:3px;
     display: block;
-    cursor: pointer;
-    margin:5px 15px;
-    &:hover {
-      background: #b3afaf
-    }
+    border:none;
+    background:none;
+    border:1px solid #b3afaf;
+    border-radius:3px;
+    padding:4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin:0 10px;
+    cursor:pointer;
   }
 }
