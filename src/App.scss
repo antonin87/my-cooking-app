@@ -4,11 +4,10 @@ $colorStep: 7;
 $rotateIndex: 0;
 $rotateStep: 60;
 
-.menu-wrapper{
-  height:100%;
-  width:100%;
-  position:absolute;
-  transition: all .5s ease;
+.menu-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .menu {
@@ -64,9 +63,12 @@ $rotateStep: 60;
 
 .icon {
   position: absolute;
+  /* exact values here depend on what you are placing inside the items (icon, image, text, etc.) */
   right: 15%;
   top: 30%;
+  /* make sure it it rotated enough; angle of rotation = angle of the sector itself */
   transform: rotate(-40deg);
+  /* style further as needed */
   color: darken($colorWheel, 60%);
   font-family: Indie Flower;
   font-size: 28px;

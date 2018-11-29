@@ -1,14 +1,15 @@
 import React, { Fragment, Component } from 'react';
-import Recipe from '../models/Recipe';
-import RecipeComponent from './RecipeComponent';
-import { CookingContext} from '../context/CookingContext';
-import ClipPath from './ClipPath';
+import Recipe from './../../models/Recipe';
+import RecipeComponent from '../RecipeComponent';
+import ClipPath from './../../components/ClipPath';
+
 class Wheel extends React.Component {
 
 state = {recipes: [], recipesCategories: []};
 
 componentDidMount() {
   this.recipe = new Recipe();
+
   this.recipe.getAllRecipe()
       .then((response) => {
         this.setState({
@@ -21,23 +22,16 @@ componentDidMount() {
       })     
 }
 
-
 render() {
     return (
       <Fragment>
-      <CookingContext.Consumer>
-        {
-          ({theme}) => (
-          <div className={'menu-wrapper'} style={{backgroundColor: theme.background}}>
+          <div className={'menu-wrapper'} style={{backgroundColor: this.props.theme.background}}>
             <ul className="menu">
               {this.state.recipesCategories.map((recipesCategory, id) => (
                 <RecipeComponent recipe={recipesCategory} loopIndex={id} key={id} />
               ))}
           </ul>
         </div>
-        )
-        }
-    </CookingContext.Consumer>
     <ClipPath />
     </Fragment>
   
