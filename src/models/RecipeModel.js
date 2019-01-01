@@ -14,11 +14,11 @@ class RecipeCatalog {
     /**
      * Get recipe by type
      * @param {*} recipes 
-     * @param {*} category 
+     * @param {*} urlName 
      */
-    getRecipeByCategory(recipes, idCategory) {
+    getRecipeByCategory(recipes, urlNameCategory) {
         const categoryRecipes = recipes.filter(recipe => {
-            return recipe.idCategory === idCategory;
+            return recipe.urlName === urlNameCategory;
         })
         return categoryRecipes;
     }

@@ -1,22 +1,15 @@
 import React, { Component } from "react";
-import {themes, CookingContext} from './CookingContext';
+import {CookingContext} from './CookingContext';
 import CategoryModel from './../models/CategoryModel';
-
 
 class CookingProvider extends Component {
   constructor(props) {
     super(props);
-    this.toggleTheme = () => {
-      this.setState(state => ({
-        theme:
-          state.theme === themes.dark
-            ? themes.light
-            : themes.dark,
-      }));
+    this.toggleTheme = (color) => {
+      this.setState({theme: color});
     };
-
     this.state = {
-      theme: themes.light,
+      theme: null,
       toggleTheme: this.toggleTheme,
     };
   }
@@ -34,14 +27,8 @@ class CookingProvider extends Component {
         })
   }
 
-
-
   render() {
     return (
-      /**
-       * la propriété value est très importante ici, elle rend
-       * le contenu du state disponible aux `Consumers` de l'application
-       */
       <CookingContext.Provider value={this.state}>
         {this.props.children}
       </CookingContext.Provider>

@@ -1,24 +1,115 @@
-$base : rgb(93, 143, 207);
-$colorStep: 7;
+@font-face {
+  font-family: 'Lora';
+  src: url('./fonts/Lora-Regular.eot');
+  src: url('./fonts/Lora-Regular.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/Lora-Regular.woff2') format('woff2'),
+      url('./fonts/Lora-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$base : rgb(196, 135, 95);
+$colorStep: 4;
 $colorIndex: 0;
 $rotateStep: 60;
 $rotateIndex: 0;
 
-.menu-wrap{
-  display: flex;
+$delayScalingTransitionTime: 1s;
+$delayMenuTransitionTime: 1s;
+
+/**
+  **************
+  * GLOBAL APP
+  **************
+**/
+
+html, body, #root, #myCookingApp, ul {
+  margin:0;
+  padding:0;
 }
+
+html, body, #root, #myCookingApp {
+  width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+
+#myCookingApp {
+  transition: background-color 1s ease;
+  &.with-theme {
+   .header {
+     ul {
+       margin:0;
+       padding:0;
+       li {
+         &:last-child {
+           padding-left:72px;
+         }
+       }
+     }
+   } 
+   .menu{
+    animation: menuAnimation 1.5s ease;
+    animation-fill-mode: forwards; 
+    animation-delay: 1.5s;
+
+    }
+    .recipes {
+      opacity:1;
+      transition: opacity 1s ease;
+      transition-delay: 1s;
+    }
+  }
+}
+
+/**
+  ********** 
+  * HEADER
+  **********
+**/
+.header {
+  padding:10px 20px;
+  background-color: #f4ecd5;
+  position:fixed;
+  width:100%;
+  ul {
+    display: flex;
+    list-style-type: none;
+    li {
+      padding:0 5px 0 0;
+      transition: padding-left 1.1s ease;
+      transition-delay: $delayMenuTransitionTime;
+      img {
+        height: 50px;
+      }
+    }
+  }
+}
+
+/**
+  ************* 
+  * WHEEL MENU
+  *************
+**/
 
 .menu {
   padding: 0;
   list-style: none;
-  position: relative;
-  margin: 40px auto;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
   width: 40%;
   height: 0;
   padding-top: 40%;
   border-radius:50%;
   border:5px solid lighten($base, 10%);
   box-shadow: 4px 8px 10px 2px #b3afaf;
+  overflow: hidden;
+  
+  //transition: top 1s ease, left 1s ease, transform 1s ease;
+  //transition-delay: $delayScalingTransitionTime;
 }
 
 .menu li {
@@ -30,16 +121,57 @@ $rotateIndex: 0;
   height: 100%;
   clip-path: url(#sector);
   transform-style: preserve-3d;
-  transition: background-color .3s ease;
+  transition: background-color, transform 1s ease;
 }
+
 
 @for $i from 1 through 9 {
   .menu-#{$i} {
     background-color: darken($base, $colorIndex * 1%);
     transform: rotate($rotateIndex * 1deg);
+
+    .icon {
+      @if $i == 6 {
+        right:12%;
+      }
+      @if $i == 5 {
+        top:32%;
+        right:20%;
+      }
+      @if $i == 6 {
+        right:13%;
+      }
+    }
+
+    &:after {
+      background-color: darken($base, $colorIndex * 1%);
+    }
+    &:before {
+      background-color: lighten($base, 20%);
+    }
     &:hover{
       background-color: darken($base, ($colorStep * 2) * 1%)
     } 
+    &.active{
+      z-index: 9999;
+      clip-path: none;
+      @if $rotateIndex > 180 {
+        transform: rotate(360deg);
+      } @else {
+        transform: rotate(0deg);
+      }
+      .icon {
+        top:50%;
+        right:50%;
+        transform:translate(50%, -50%);
+      }
+    }
+    &.inactive{
+      text-indent: -9999px;
+      clip-path: none;
+      z-index: 0;
+    }
+    
     $colorIndex: $colorIndex + $colorStep;
     $rotateIndex: $rotateIndex + $rotateStep;
   }
@@ -48,24 +180,41 @@ $rotateIndex: 0;
 
 .icon {
   position: absolute;
+  transition:  top 1.5s ease, right 1.5s ease, transform 1s ease;
   right: 15%;
-  top: 30%;
+  top: 31%;
   transform: rotate(-40deg);
   color: darken($base, 60%);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 28px;
+  font-family: 'Lora', Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 23px;
+}
 
-  button {
-    text-align: center;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid #b3afaf;
-    padding:3px;
-    display: block;
-    cursor: pointer;
-    margin:5px 15px;
-    &:hover {
-      background: #b3afaf
-    }
+.recipes {
+  opacity:0;
+  padding-top:90px;
+  padding-left:20px;
+}
+
+@keyframes menuAnimation {
+  0% { 
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+  }
+  50% {
+    left:50%;
+    top:50%;
+    transform-origin: center center;
+    transform:translate(-50%, -50%) scale(.12);
+  }  
+  
+  100% {
+    left:45px;
+    top:5px;
+    transform-origin: 0 0;
+    transform:translate(0,0) scale(.12);
   }
 }

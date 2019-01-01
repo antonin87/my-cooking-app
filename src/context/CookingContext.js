@@ -3,15 +3,12 @@ import { createContext } from "react";
 export const themes = {
     light: {
       foreground: '#000000',
-      background: '#fff',
+      background: 'blue',
     },
     dark: {
       foreground: '#ffffff',
-      background: '#222222',
+      background: 'red',
     },
   };
 
-export const CookingContext = createContext({
-    theme: themes.light,
-    toggleTheme: () => {}
-});
+export const CookingContext = createContext();

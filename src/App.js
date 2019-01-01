@@ -1,20 +1,17 @@
 import React, {Fragment} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Home from './pages/Home';
-import Wheel from './components/Wheel/';
-import Recipe from './components/Recipe/Recipe';
+import {BrowserRouter} from 'react-router-dom';
+import CookingProvider from './context/CookingProvider';
+import MyCookingApp from './MyCookingApp';
 import './App.scss';
 
 class App extends React.Component {
   render() {
     return (
         <BrowserRouter>
-        <Fragment>
-          <Wheel />
-          <Switch>
-            <Route path="/" component={Home} exact/>
-            <Route path="/recipe/:categoryId" component={Recipe}/>
-          </Switch>
+          <Fragment>
+            <CookingProvider value={this.state}>
+              <MyCookingApp />
+            </CookingProvider>
           </Fragment>
         </BrowserRouter>    
     );

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Wheel from './Wheel';
-import { CookingContext } from './../../context/CookingContext';
-import CategoryModel from './../../models/CategoryModel';
+import { CookingContext } from './../../../context/CookingContext';
+import CategoryModel from './../../../models/CategoryModel';
 
 export default class extends Component {
     

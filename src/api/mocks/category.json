@@ -1,26 +1,32 @@
 [
     {
         "_id": "1",
+        "urlName": "entrees",
         "title": "Entrées"
     },
     {
         "_id": "2",
+        "urlName": "plats",
         "title": "Plats"
     },
     {
         "_id": "3",
+        "urlName": "desserts",
         "title": "Desserts"
     },       
     {
         "_id": "4",
+        "urlName": "patisseries",
         "title": "Pâtisseries"
     },       
     {
         "_id": "5",
-        "title": "Hors d'oeuvres"
+        "urlName": "autres",
+        "title": "Autres"
     },       
     {
         "_id": "6",
+        "urlName": "specialites",
         "title": "Spécialités"
     }       
 ]
